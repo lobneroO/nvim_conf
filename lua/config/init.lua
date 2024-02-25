@@ -20,3 +20,7 @@ require("lazy").setup("plugins")
 
 -- load the editor.lua file from nvim/lua/config for general (n)vim settings like line numbers
 require("config.editor")
+
+-- load the init.lua file from nvim/lua/dap for all the dap server configs
+require("debug-adapters.init")
+
