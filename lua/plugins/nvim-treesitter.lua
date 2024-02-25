@@ -1,17 +1,15 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = function()
-		require("nvim-treesitter.install").update({ with_sync = true })(
-			
-		)
+		require("nvim-treesitter.install").update({ with_sync = true })()
 	end,
 	config = function()
 		local configs = require("nvim-treesitter.configs")
 
 		configs.setup({
 			-- languages to install
-			ensure_installed = { 
-				"c", "cpp", 
+			ensure_installed = {
+				"c", "cpp",
 				"hlsl", "glsl", "wgsl",
 				"java",
 				"lua", "vim", --"help",
