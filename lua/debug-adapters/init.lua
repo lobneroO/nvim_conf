@@ -4,4 +4,4 @@
 --  cpp for the file name
 --  and omit the .lua extension
 
-require("dap.cpp")
+require("debug-adapters.cpp")
