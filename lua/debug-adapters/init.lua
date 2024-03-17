@@ -5,3 +5,4 @@
 --  and omit the .lua extension
 
 require("debug-adapters.cpp")
+require("debug-adapters.rs")
