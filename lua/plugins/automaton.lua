@@ -15,6 +15,8 @@ return {
         require("automaton").setup({})
 		-- keymappings for setup and call
 
+		vim.keymap.set("n", "<F5>", "<CMD>Automaton debug default<CR>", { desc = "Compile and debug" })
+
 		vim.keymap.set("n", "<leader>wC", "<CMD>Automaton create<CR>", { desc = "Create workspace" })
 		vim.keymap.set("n", "<leader>wI", "<CMD>Automaton init<CR>", { desc = "Init workspace" })
 		vim.keymap.set("n", "<leader>wL", "<CMD>Automaton load<CR>", { desc = "Load workspace" })
