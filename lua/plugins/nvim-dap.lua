@@ -7,8 +7,9 @@ return {
     -- set up key maps for debugger (basically standard mappings for VS C++)
     config = function()
         -- use F5 to start debugging and as a continue.
+        -- NOTE: this is handeled by automation plugin!
         -- nvim-dap-ui will listen to dap opening a debug sessions automatically open
-        vim.keymap.set('n', '<F5>', function() require'dap'.continue() end)
+        -- vim.keymap.set('n', '<F5>', function() require'dap'.continue() end)
         vim.keymap.set('n', '<F10>', function() require'dap'.step_over() end)
         vim.keymap.set('n', '<F11>', function() require'dap'.step_into() end)
         -- shift+F11 for set out, like VS has it standard for C++
