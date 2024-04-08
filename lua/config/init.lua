@@ -1,3 +1,14 @@
+-- figure out on which OS this config is used
+function GetOS()
+    return package.config:sub(1,1) == "\\" and "Windows" or "Unix"
+end
+
+-- on Windows in git-bash, the commands cannot be executed with :!<cmd>.
+-- to work around this, change the flag that is used to send commands
+if GetOS() == "Windows" then
+    vim.cmd("set shellcmdflag=-c")
+end
+
 -- load the remap.lua file in the nvim/lua/config folder (i.e. search from the root, not from "here" locally)
 require("config.remap")
 
