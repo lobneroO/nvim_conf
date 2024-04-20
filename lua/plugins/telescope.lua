@@ -5,11 +5,19 @@ return {
 		'nvim-tree/nvim-web-devicons',
 	},
 	-- add some key mappings to access the telescope functionalities
-	keys = {
-		{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find file"},
-		{ "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live grep"},
-		{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find in buffers"},
-		{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags"},
-		{ "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps"},
-	},
+	config = function()
+		local builtin = require('telescope.builtin')
+		vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find file" })
+		vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Live grep" })
+		vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find in buffers" })
+		vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help Tags" })
+		vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = "Key Maps" })
+		vim.keymap.set('n', '<leader>fp', builtin.git_files, { desc = "Find files in git repository" })
+		vim.keymap.set('n', '<leader>fw',
+			function()
+				local word = vim.fn.expand("<cword>")
+				builtin.grep_string({ search = word })
+			end, { desc = "Find files in git repository" })
+	end,
 }
+
