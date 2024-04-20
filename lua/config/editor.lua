@@ -31,3 +31,15 @@ vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
 require("catppuccin").setup()
 
 vim.cmd [[colorscheme catppuccin]]
+
+-- highlight yanking
+-- e.g. yy -> highlights line. yap -> highlights the paragraph around the cursor.
+--  either way, highlighted text is yanked and can be pasted.
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight when yanking (copying) text",
+    group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
+
