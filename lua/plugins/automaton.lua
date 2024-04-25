@@ -30,3 +30,4 @@ return {
         vim.keymap.set("n", "<leader>wt", "<CMD>Automaton tasks<CR>")
 	end,
 }
+
