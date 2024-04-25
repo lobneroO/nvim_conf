@@ -6,7 +6,8 @@ end
 -- on Windows in git-bash, the commands cannot be executed with :!<cmd>.
 -- to work around this, change the flag that is used to send commands
 if GetOS() == "Windows" then
-    vim.cmd("set shellcmdflag=-c")
+    vim.cmd [[let &shell = '"C:/Program Files/Git/bin/bash.exe"']]
+    vim.cmd [[let &shellcmdflag = '-s']]
 end
 
 -- load the remap.lua file in the nvim/lua/config folder (i.e. search from the root, not from "here" locally)
