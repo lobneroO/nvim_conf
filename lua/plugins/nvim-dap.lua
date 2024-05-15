@@ -9,7 +9,7 @@ return {
         -- use F5 to start debugging and as a continue.
         -- NOTE: this is handeled by automation plugin!
         -- nvim-dap-ui will listen to dap opening a debug sessions automatically open
-        -- vim.keymap.set('n', '<F5>', function() require'dap'.continue() end)
+        vim.keymap.set('n', '<F5>', function() require'dap'.continue() end)
         vim.keymap.set('n', '<F10>', function() require'dap'.step_over() end)
         vim.keymap.set('n', '<F11>', function() require'dap'.step_into() end)
         -- shift+F11 for set out, like VS has it standard for C++
@@ -22,6 +22,16 @@ return {
             require'dap'.terminate()
         end)
 
+        -- keymaps to be able to work in windows terminal, which does not forward some of the
+        -- keys (e.g. F5, F11)
+        vim.keymap.set('n', '<leader>ü', function() require'dap'.continue() end)
+        vim.keymap.set('n', '<leader>+', function()
+            require'dap'.terminate()
+        end)
+        vim.keymap.set('n', ',', function() require'dap'.step_over() end)
+        vim.keymap.set('n', '.', function() require'dap'.step_into() end)
+        vim.keymap.set('n', '<S-.>', function() require'dap'.step_out() end)
+
         -- additionally: keys to handle breakpoints
         vim.keymap.set('n', '<leader>b', function() require'dap'.toggle_breakpoint() end)
         vim.keymap.set('n', '<leader>B', function()
@@ -30,3 +40,4 @@ return {
             require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
     end
 }
+
