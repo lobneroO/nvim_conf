@@ -4,6 +4,7 @@
   "automaton.nvim": { "branch": "master", "commit": "dd1d3e4ddf48e3fcd6a34f21faf08dbb0fdb0d6d" },
   "catppuccin": { "branch": "main", "commit": "a1439ad7c584efb3d0ce14ccb835967f030450fe" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "5af77f54de1b16c34b23cba810150689a3a90312" },
+  "diffview.nvim": { "branch": "main", "commit": "3dc498c9777fe79156f3d32dddd483b8b3dbd95f" },
   "lazy.nvim": { "branch": "main", "commit": "3f13f080434ac942b150679223d54f5ca91e0d52" },
   "lsp-zero.nvim": { "branch": "v3.x", "commit": "b93f040edd57888cd6a1e7d9dee47dddc4463f8f" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "1a14770dc8c7cb29643870ac79788eec6f7ce1f8" },
