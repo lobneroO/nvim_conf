@@ -22,38 +22,53 @@ return {
 		-- to learn the available actions
 			lsp_zero.default_keymaps({buffer = bufnr})
 		end)
-		
+
+		-- default keymap for opening float is K.
+		-- default keymap for going to definition (gd)
+		-- or going to declaration (gD) don't work :(
+		-- go to next / previous diagnostic. important especially,
+		-- if multiple diagnostics appear on one line
+		vim.keymap.set('n', '<leader>.',
+			function()
+				vim.diagnostic.goto_next()
+			end, { desc = "Go to next diagnostic"})
+		vim.keymap.set('n', '<leader>,',
+			function()
+				vim.diagnostic.goto_prev()
+			end, { desc = "Go toprevious diagnostic"})
+
 		-- setup mason for lsp installation from within nvim
 		require('mason').setup({})
 		require('mason-lspconfig').setup({
 			ensure_installed = {
-                "clangd", "cmake",
-                "lua_ls",
-                "pylsp",
-                "rust_analyzer",
-            },
+				"clangd", "cmake",
+				"lua_ls",
+				"pylsp",
+				"rust_analyzer",
+			},
 			handlers = {
 				lsp_zero.default_setup,
 			},
 		})
 
-        -- 'vim' is global, but LSP doesn't know about it yet.
-        require('lspconfig').lua_ls.setup({
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        globals = {
-                            'vim',
-                        }
-                    }
-                }
-            }
-        })
+		-- 'vim' is global, but LSP doesn't know about it yet.
+		require('lspconfig').lua_ls.setup({
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = {
+							'vim',
+						}
+					}
+				}
+			}
+		})
 
-        -- additionally setup the "ensure_installed" languages
-        require('lspconfig').clangd.setup({})
-        require('lspconfig').cmake.setup({})
-        require('lspconfig').pylsp.setup({})
-        require('lspconfig').rust_analyzer.setup({})
+		-- additionally setup the "ensure_installed" languages
+		require('lspconfig').clangd.setup({})
+		require('lspconfig').cmake.setup({})
+		require('lspconfig').pylsp.setup({})
+		require('lspconfig').rust_analyzer.setup({})
 	end,
 }
+
