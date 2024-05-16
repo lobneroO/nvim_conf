@@ -18,7 +18,8 @@ return {
 				else
 					vim.cmd('DiffviewClose')
 				end
-			end
+			end,
+			{ desc = "Toggle diffview on/off"}
 		)
 	end,
 }
