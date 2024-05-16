@@ -12,7 +12,7 @@ return {
 
 
 	config = function()
-        require("automaton").setup({})
+		require("automaton").setup({})
 		-- keymappings for setup and call
 
 		vim.keymap.set("n", "<F5>", "<CMD>Automaton debug default<CR>", { desc = "Compile and debug" })
@@ -22,12 +22,12 @@ return {
 		vim.keymap.set("n", "<leader>wL", "<CMD>Automaton load<CR>", { desc = "Load workspace" })
 
 		vim.keymap.set("n", "<leader>wc", "<CMD>Automaton config<CR>", { desc = "Workspace config" })
-        vim.keymap.set("n", "<leader>wr", "<CMD>Automaton recents<CR>")
-        vim.keymap.set("n", "<leader>ww", "<CMD>Automaton workspaces<CR>")
-        vim.keymap.set("n", "<leader>wj", "<CMD>Automaton jobs<CR>")
-        vim.keymap.set("n", "<leader>wl", "<CMD>Automaton launch<CR>")
-        vim.keymap.set("n", "<leader>wd", "<CMD>Automaton debug<CR>")
-        vim.keymap.set("n", "<leader>wt", "<CMD>Automaton tasks<CR>")
+		vim.keymap.set("n", "<leader>wr", "<CMD>Automaton recents<CR>")
+		vim.keymap.set("n", "<leader>ww", "<CMD>Automaton workspaces<CR>")
+		vim.keymap.set("n", "<leader>wj", "<CMD>Automaton jobs<CR>")
+		vim.keymap.set("n", "<leader>wl", "<CMD>Automaton launch<CR>")
+		vim.keymap.set("n", "<leader>wd", "<CMD>Automaton debug<CR>")
+		vim.keymap.set("n", "<leader>wt", "<CMD>Automaton tasks<CR>")
 	end,
 }
 
