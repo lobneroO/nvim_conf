@@ -49,7 +49,7 @@ return {
 				"clangd", "cmake",
 				"lua_ls",
 				"pylsp",
-				"rust_analyzer",
+				-- "rust_analyzer", -- not recommended when using rustaceanvim
 			},
 			handlers = {
 				lsp_zero.default_setup,
@@ -73,7 +73,7 @@ return {
 		require('lspconfig').clangd.setup({})
 		require('lspconfig').cmake.setup({})
 		require('lspconfig').pylsp.setup({})
-		require('lspconfig').rust_analyzer.setup({})
+		-- require('lspconfig').rust_analyzer.setup({})
 	end,
 }
 
