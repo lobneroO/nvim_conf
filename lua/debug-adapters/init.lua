@@ -4,5 +4,9 @@
 --  cpp for the file name
 --  and omit the .lua extension
 
+-- first setup lldb, as that is shared among different languages
+require("debug-adapters.lldb_setup")
+
+-- then setup the adapters using lldb
 require("debug-adapters.cpp")
 require("debug-adapters.rs")
