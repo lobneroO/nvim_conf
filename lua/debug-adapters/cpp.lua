@@ -10,7 +10,7 @@ elseif GetOS() == "Windows" then
     dap.adapters.c_dbg = {
         type = "executable",
         command = "clang",
-        args = { "-i", "dapt" }
+        -- args = { "-i", "dap" }
     }
 end
 dap.configurations.c = {
