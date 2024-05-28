@@ -20,12 +20,16 @@ return {
 		lsp_zero.on_attach(function(client, bufnr)
 		-- see :help lsp-zero-keybindings
 		-- to learn the available actions
-			lsp_zero.default_keymaps({buffer = bufnr})
+			lsp_zero.default_keymaps({
+				buffer = bufnr,
+
+				-- whichkey is overwriting lsp-zero shortcuts (like gd, gD)
+				-- therefore force them here
+				preserve_mappings = false
+			})
 		end)
 
 		-- default keymap for opening float is K.
-		-- default keymap for going to definition (gd)
-		-- or going to declaration (gD) don't work :(
 		-- go to next / previous diagnostic. important especially,
 		-- if multiple diagnostics appear on one line
 		vim.keymap.set('n', '<leader>.',
@@ -36,6 +40,7 @@ return {
 			function()
 				vim.diagnostic.goto_prev()
 			end, { desc = "Go toprevious diagnostic"})
+
 
 		-- setup mason for lsp installation from within nvim
 		require('mason').setup({})
