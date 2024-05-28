@@ -23,7 +23,8 @@ return {
         })
 
         local api = require("nvim-tree.api")
-        vim.keymap.set('n', "<C-p>", api.tree.toggle) --, { "Toggle file tree" })
+        vim.keymap.set('n', "<C-p>", api.tree.toggle, { desc = "Toggle file tree" })
+        vim.keymap.set('n', "<A-p>", api.tree.focus, { desc = "Focus file tree" })
     end,
 }
 
