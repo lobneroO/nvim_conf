@@ -18,8 +18,8 @@ return {
 		local lsp_zero = require('lsp-zero')
 
 		lsp_zero.on_attach(function(client, bufnr)
-		-- see :help lsp-zero-keybindings
-		-- to learn the available actions
+			-- see :help lsp-zero-keybindings
+			-- to learn the available actions
 			lsp_zero.default_keymaps({
 				buffer = bufnr,
 
@@ -28,6 +28,21 @@ return {
 				preserve_mappings = false
 			})
 		end)
+
+		-- make sure lsp_signature attaches
+		vim.api.nvim_create_autocmd("LspAttach", {
+			callback = function(args)
+				local bufnr = args.buf
+				local client = vim.lsp.get_client_by_id(args.data.client_id)
+				if vim.tbl_contains({ 'null-ls'}, client.name) then -- blacklist lsp
+					return
+				end
+
+				require("lsp_signature").on_attach({
+					-- set up options here
+				}, bufnr)
+			end,
+		})
 
 		-- default keymap for opening float is K.
 		-- go to next / previous diagnostic. important especially,
@@ -39,7 +54,7 @@ return {
 		vim.keymap.set('n', '<leader>,',
 			function()
 				vim.diagnostic.goto_prev()
-			end, { desc = "Go toprevious diagnostic"})
+			end, { desc = "Go to previous diagnostic"})
 
 
 		-- setup mason for lsp installation from within nvim
