@@ -5,7 +5,7 @@ return
 	'ellisonleao/glow.nvim',
 	config = function()
 		require("glow").setup()
-		vim.keymap.set('n', "<leader>M", ":Glow<CR>", { desc = "Open Markdown Preview"})
+		vim.keymap.set('n', "<C-M>", ":Glow<CR>", { desc = "Open Markdown Preview"})
 	end,
 	cmd = "Glow",
 }
