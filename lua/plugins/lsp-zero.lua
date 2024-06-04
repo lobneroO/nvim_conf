@@ -64,6 +64,7 @@ return {
 				"clangd", "cmake",
 				"lua_ls",
 				"pylsp",
+				"ltex", -- includes LaTeX and markdown
 				-- "rust_analyzer", -- not recommended when using rustaceanvim
 			},
 			handlers = {
@@ -88,6 +89,10 @@ return {
 		require('lspconfig').clangd.setup({})
 		require('lspconfig').cmake.setup({})
 		require('lspconfig').pylsp.setup({})
+		require('lspconfig').ltex.setup({
+			-- set up glow on ltex setup, such that it can be opened via keymap
+			require('glow').setup()
+		})
 		-- require('lspconfig').rust_analyzer.setup({})
 	end,
 }
