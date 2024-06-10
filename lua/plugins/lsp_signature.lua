@@ -13,7 +13,7 @@ return
 		-- toggle floating window.
 		-- make sure this is available in both
 		-- normal and insert mode!
-		vim.keymap.set({'n', 'i'}, '<C-K>',
+		vim.keymap.set({'n', 'i'}, '<C-k>',
 			function()
 				require('lsp_signature').toggle_float_win()
 			end,
