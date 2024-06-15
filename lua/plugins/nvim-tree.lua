@@ -19,6 +19,7 @@ return {
             },
             filters = {
                 dotfiles = false,
+                git_ignored = false,
             },
         })
 
@@ -26,7 +27,10 @@ return {
         vim.keymap.set('n', "<C-p>", api.tree.toggle, { desc = "Toggle file tree" })
         vim.keymap.set('n', "<C-i>", api.tree.focus, { desc = "Focus file tree" })
         vim.keymap.set('n', "<A-b>", api.tree.toggle_hidden_filter, { desc = "Toggle hidden filter" })
+        vim.keymap.set('n', "<A-g>", api.tree.toggle_gitignore_filter, { desc = "Toggle gitignore filter" })
         vim.keymap.set('n', "<C-f>", api.tree.change_root_to_node, { desc = "Change root to node" })
+
+        vim.keymap.set('n', "?", api.tree.toggle_help, { desc = "Toggle nvim tree help" })
     end,
 }
 
