@@ -88,7 +88,32 @@ return {
 		-- additionally setup the "ensure_installed" languages
 		require('lspconfig').clangd.setup({})
 		require('lspconfig').cmake.setup({})
-		require('lspconfig').pylsp.setup({})
+		require('lspconfig').pylsp.setup({
+			settings = {
+				pylsp = {
+					plugins = {
+						pycodestyle = {
+							ignore={
+								-- ignore warning about incorrect indent when continuing on new line
+								-- this is ignored, because having to continue more than one indent further
+								-- in is stupid. whoever came up with that shitty idea?
+								-- i.e. use:
+								-- long_line(first_param,
+								--     second_param)
+								-- rather than
+								-- long_line(first_param,
+								--           second_param)
+								'E128',
+								-- ignore 'line break before binary operator'. seriously,
+								-- who comes up with rules this shitty? plus, breaking after
+								-- is disapproved of as well. what do they want me to do? morons
+								'W503'
+							}
+						}
+					}
+				}
+			}
+		})
 		require('lspconfig').ltex.setup({
 			-- set up glow on ltex setup, such that it can be opened via keymap
 			require('glow').setup()
