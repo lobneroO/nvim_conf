@@ -62,6 +62,7 @@ return {
 		require('mason-lspconfig').setup({
 			ensure_installed = {
 				"clangd", "cmake",
+				"glsl_analyzer",
 				"lua_ls",
 				"pylsp",
 				"ltex", -- includes LaTeX and markdown
@@ -88,6 +89,12 @@ return {
 		-- additionally setup the "ensure_installed" languages
 		require('lspconfig').clangd.setup({})
 		require('lspconfig').cmake.setup({})
+		require('lspconfig').glsl_analyzer.setup({
+			filetypes = {
+				"glsl", "vert", "frag", "tesc", "tese", "geom", "comp",
+				"rchit", "rmiss", "rahit", "rgen"
+			}
+		})
 		require('lspconfig').pylsp.setup({
 			settings = {
 				pylsp = {
