@@ -6,6 +6,18 @@ vim.opt.clipboard = 'unnamedplus'
 -- force osc 52 as clipboard provider. available since nvim 0.10.0
 -- this will enable yank and paste from an ssh instance to the current
 -- desktop (probably not supported on Konsole!)
+--
+-- note that paste with osc52 does not work as suggested in the documentation
+-- (at least on windows terminal, git-bash, ssh), so change the paste as suggested
+-- here require('vim.ui.clipboard.osc52').paste('*'),
+-- https://github.com/neovim/neovim/discussions/28010#discussioncomment-9877494
+local function paste()
+    return {
+        vim.fn.split(vim.fn.getreg(""), "\n"),
+        vim.fn.getregtype(""),
+    }
+end
+
 vim.g.clipboard = {
     name = 'OSC 52',
     copy = {
@@ -13,8 +25,8 @@ vim.g.clipboard = {
         ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
     },
     paste = {
-        ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-        ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+        ['+'] = paste,
+        ['*'] = paste,
     },
 }
 
