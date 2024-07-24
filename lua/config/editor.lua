@@ -3,6 +3,20 @@ vim.wo.number = true
 
 -- share the clipboard with the system
 vim.opt.clipboard = 'unnamedplus'
+-- force osc 52 as clipboard provider. available since nvim 0.10.0
+-- this will enable yank and paste from an ssh instance to the current
+-- desktop (probably not supported on Konsole!)
+vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+        ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+        ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+    },
+    paste = {
+        ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+        ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+    },
+}
 
 -- use 4 spaces for tabs
 vim.opt.tabstop = 4
