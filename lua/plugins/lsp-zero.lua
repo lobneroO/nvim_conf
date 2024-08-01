@@ -55,6 +55,18 @@ return {
 			function()
 				vim.diagnostic.goto_prev()
 			end, { desc = "Go to previous diagnostic"})
+        -- need to get type information for the symbol (i.e. usually variable)
+        -- under the cursor
+        vim.keymap.set('n', 'ga',
+            function()
+                vim.lsp.buf.hover()
+            end, { desc = "Display type information of the element under cursor"} )
+        -- sometimes code actions are available (such as adding an import)
+        -- the following shortcut will open these
+        vim.keymap.set('n', 'ca',
+            function()
+                vim.lsp.buf.code_action()
+            end, { desc = "Open coda actions"})
 
 
 		-- setup mason for lsp installation from within nvim
