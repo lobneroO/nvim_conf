@@ -24,13 +24,46 @@ vim.opt.scrolloff = 8
 -- populate the sign column with useful info (tbh I don't see a difference atm)
 vim.opt.signcolumn = "yes"
 
+-- vscode light theme
+vim.o.background = 'light'
+local c = require('vscode.colors').get_colors()
+require('vscode').setup({
+    style = 'light',
+
+    -- enable transparent background
+    -- transparent = true,
+
+    -- enable italic comments
+    italic_comments = true,
+
+    -- underline `@markup.link.*` variants
+    underline_links = true,
+
+    -- disable nvim-tree background color
+    disable_nvimtree_bg = true,
+
+    -- override colors
+    -- color_overrides = {
+    --     vscLineNumber = '#098658',
+    -- },
+
+    -- override highlight groups
+    group_overrides = {
+        -- supports the same val table as vim.api.nvim_set_hl
+        -- use colors from this colorscheme by requiring vscode.colors
+        Cursor = { fg=c.vscDarkBlue, bg=c.vscLightGreen, bold=true },
+    }
+})
+-- load theme without affecting devicon colors
+vim.cmd.colorscheme "vscode"
 
 -- use external color scheme catppucin light theme, installed in lua/plugins/catppuccin.lua
-vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
+-- vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
 
-require("catppuccin").setup()
-
-vim.cmd [[colorscheme catppuccin]]
+-- cattpuccin light color scheme
+-- require("catppuccin").setup()
+--
+-- vim.cmd [[colorscheme catppuccin]]
 
 -- highlight yanking
 -- e.g. yy -> highlights line. yap -> highlights the paragraph around the cursor.
