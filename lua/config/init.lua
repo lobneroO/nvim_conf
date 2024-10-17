@@ -7,7 +7,13 @@ end
 -- to work around this, change the flag that is used to send commands
 if GetOS() == "Windows" then
     vim.cmd [[let &shell = '"C:/Program Files/Git/bin/bash.exe"']]
-    vim.cmd [[let &shellcmdflag = '-s']]
+    -- usually -s is recommended for git bash, but Automaton
+    -- wouldn't work with it. -c seems to not be an issue.
+    vim.cmd [[let &shellcmdflag = '-c']]
+    -- these are needed for Automaton, otherwise its terminal
+    -- waits for input that never comes.
+    vim.cmd [[set shellxquote=]]
+    vim.cmd [[set shellxescape=]]
 end
 
 -- load the remap.lua file in the nvim/lua/config folder (i.e. search from the root, not from "here" locally)
