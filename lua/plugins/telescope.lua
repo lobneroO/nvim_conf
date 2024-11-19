@@ -18,6 +18,20 @@ return {
 				local word = vim.fn.expand("<cword>")
 				builtin.grep_string({ search = word })
 			end, { desc = "Find files in git repository" })
+
+        require('telescope').setup {
+            extensions = {
+                git_diffs = {
+                    git_command = { "git", "log", "--oneline", "--decorate", "--all", "." }
+                }
+            }
+        }
+        require('telescope').load_extension('git_diffs')
+        vim.keymap.set('n', '<leader>dc', 
+            function()
+                require('telescope').extensions.git_diffs.diff_commits()
+            end,
+            { desc = "Diff HEAD against commit" })
 	end,
 }
 
