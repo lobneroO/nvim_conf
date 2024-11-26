@@ -67,6 +67,9 @@ return {
             function()
                 vim.lsp.buf.code_action()
             end, { desc = "Open coda actions"})
+        -- renaming based on LSP for refactoring a variable or function name
+        -- is way more efficient than :%s/name1/name2/g ...
+        vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, { desc = "LSP rename"})
 
 
 		-- setup mason for lsp installation from within nvim
