@@ -78,6 +78,7 @@ return {
 			ensure_installed = {
 				"clangd", "cmake",
 				"glsl_analyzer",
+                "csharp_ls",
 				"lua_ls",
 				"pylsp",
 				"ltex", -- includes LaTeX and markdown
@@ -136,6 +137,7 @@ return {
 				}
 			}
 		})
+        require('lspconfig').csharp_ls.setup({})
 		require('lspconfig').ltex.setup({
 			-- set up glow on ltex setup, such that it can be opened via keymap
 			require('glow').setup()

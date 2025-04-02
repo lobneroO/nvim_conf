@@ -10,3 +10,6 @@ require("debug-adapters.lldb_setup")
 -- then setup the adapters using lldb
 require("debug-adapters.cpp")
 require("debug-adapters.rs")
+
+-- other debug adapters
+require("debug-adapters.cs")
