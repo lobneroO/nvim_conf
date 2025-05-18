@@ -1,6 +1,7 @@
 return
 {
 		'rmagatti/auto-session',
+        lazy = false,
 		config = function()
 			require("auto-session").setup({
 				log_level = "error",
@@ -16,6 +17,6 @@ return
 				})
 			})
 
-			vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+			-- vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 		end
 }
