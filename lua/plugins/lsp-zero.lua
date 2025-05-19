@@ -136,11 +136,6 @@ return {
 				}
 			}
 		})
-		require('lspconfig').ltex.setup({
-			-- set up glow on ltex setup, such that it can be opened via keymap
-			require('glow').setup()
-		})
-		-- require('lspconfig').rust_analyzer.setup({})
 	end,
 }
 
