@@ -31,6 +31,9 @@ return {
 		-- default keymap for opening float is K.
 		-- go to next / previous diagnostic. important especially,
 		-- if multiple diagnostics appear on one line
+        vim.keymap.set('n', 'gd', function()
+            vim.lsp.buf.definition()
+        end, { desc = "Go to definition" })
 		vim.keymap.set('n', '<leader>.',
 			function()
 				vim.diagnostic.goto_next()
