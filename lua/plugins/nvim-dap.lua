@@ -18,9 +18,9 @@ return {
         vim.keymap.set('n', '<C-F5>', function() require'dap'.repl.open() end)
         -- use ctrl+q for closing the debug session and debugger.
         -- again, nvim-dap-ui will listen for this and close the ui
-        vim.keymap.set('n', '<C-q>', function()
-            require'dap'.terminate()
-        end)
+        -- vim.keymap.set('n', '<C-q>', function()
+        --     require'dap'.terminate()
+        -- end)
 
         -- keymaps to be able to work in windows terminal, which does not forward some of the
         -- keys (e.g. F5, F11)
@@ -28,9 +28,9 @@ return {
         vim.keymap.set('n', '<leader>+', function()
             require'dap'.terminate()
         end)
-        vim.keymap.set('n', ',', function() require'dap'.step_over() end)
-        vim.keymap.set('n', '.', function() require'dap'.step_into() end)
-        vim.keymap.set('n', '<S-.>', function() require'dap'.step_out() end)
+        vim.keymap.set('n', 'o', function() require'dap'.step_over() end)
+        vim.keymap.set('n', 'p', function() require'dap'.step_into() end)
+        vim.keymap.set('n', '<S-P>', function() require'dap'.step_out() end)
 
         -- additionally: keys to handle breakpoints
         vim.keymap.set('n', '<leader>b', function() require'dap'.toggle_breakpoint() end)

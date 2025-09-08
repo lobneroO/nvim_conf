@@ -20,5 +20,8 @@ return
             },
             -- log_level = 'debug',
         },
+        keys = { 
+            {"<leader>ss", "<cmd>AutoSession save<cr>", desc = "Save Session"},
+        },
         load_on_setup = true,
 }
