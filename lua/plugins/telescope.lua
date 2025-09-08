@@ -20,6 +20,7 @@ return {
 		vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = "Key Maps" })
 		vim.keymap.set('n', '<leader>fp', builtin.git_files, { desc = "Find files in git repository" })
 		vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = "Find references" })
+        vim.keymap.set('n', '<leader>fc', builtin.grep_string, { desc = "Find word under cursor" })
 		vim.keymap.set('n', '<leader>fw',
 			function()
 				local word = vim.fn.expand("<cword>")
