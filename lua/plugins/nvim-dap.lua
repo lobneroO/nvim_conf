@@ -28,9 +28,17 @@ return {
         vim.keymap.set('n', '<leader>+', function()
             require'dap'.terminate()
         end)
-        vim.keymap.set('n', 'n', function() require'dap'.step_over() end)
-        vim.keymap.set('n', 'm', function() require'dap'.step_into() end)
-        vim.keymap.set('n', '<S-M>', function() require'dap'.step_out() end)
+        -- find some keys next to each other, in which the left key
+        -- and the right key in lower and upper case are not already in use.
+        -- tries so far:
+        -- . and , (interferes with fF in-line search),
+        -- o and p (interferes with pasting)
+        -- n and m (intereferes with jumping to next search entry)
+        -- ö and ä (about 5 times. and it works, but only if you use Ä, not <S-ä> or <S-Ä>)
+        -- 9 and 0 (Ger keyboard, shift + 0 is =, which is taken as well)
+        vim.keymap.set('n', 'ö', function() require'dap'.step_over() end)
+        vim.keymap.set('n', 'ä', function() require'dap'.step_into() end)
+        vim.keymap.set('n', 'Ä', function() require'dap'.step_out() end)
 
         -- additionally: keys to handle breakpoints
         vim.keymap.set('n', '<leader>b', function() require'dap'.toggle_breakpoint() end)
