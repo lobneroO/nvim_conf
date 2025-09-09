@@ -10,6 +10,7 @@ return {
         require("mason-lspconfig").setup {
             ensure_intsalled = {
 				"clangd", "cmake",
+                "omnisharp",
 				"glsl_analyzer",
 				"lua_ls",
 				"pylsp",
