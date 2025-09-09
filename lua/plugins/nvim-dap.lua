@@ -28,9 +28,9 @@ return {
         vim.keymap.set('n', '<leader>+', function()
             require'dap'.terminate()
         end)
-        vim.keymap.set('n', 'o', function() require'dap'.step_over() end)
-        vim.keymap.set('n', 'p', function() require'dap'.step_into() end)
-        vim.keymap.set('n', '<S-P>', function() require'dap'.step_out() end)
+        vim.keymap.set('n', 'n', function() require'dap'.step_over() end)
+        vim.keymap.set('n', 'm', function() require'dap'.step_into() end)
+        vim.keymap.set('n', '<S-M>', function() require'dap'.step_out() end)
 
         -- additionally: keys to handle breakpoints
         vim.keymap.set('n', '<leader>b', function() require'dap'.toggle_breakpoint() end)
