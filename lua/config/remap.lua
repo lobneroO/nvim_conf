@@ -1,4 +1,4 @@
---dcontains key remappings for easier usage
+-- contains key remappings for easier usage
 vim.g.mapleader = " " -- leader key can be used by many plugins for key mappings
 -- default key to open "file browser" is :Ex in normal mode.
 -- remap this to, while in normal mode (-> "n"), to <leader>pv
@@ -18,3 +18,8 @@ vim.keymap.set("n", "<leader>sfp",
         vim.api.nvim_echo({{fp, 'None'}}, false, {})
     end,
     { desc = "show full file path"})
+
+-- toggle lsp diagnostics
+vim.keymap.set('n', '<leader>di', function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { silent = true, noremap = true, desc = "Toggle LSP diagnostics" })
