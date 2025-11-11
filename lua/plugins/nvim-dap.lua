@@ -25,6 +25,8 @@ return {
         -- keymaps to be able to work in windows terminal, which does not forward some of the
         -- keys (e.g. F5, F11)
         vim.keymap.set('n', '<leader>ü', function() require'dap'.continue() end)
+        -- rerun last config
+        vim.keymap.set('n', '<leader>Ü', function() require'dap'.run_last() end)
         vim.keymap.set('n', '<leader>+', function()
             require'dap'.terminate()
         end)
