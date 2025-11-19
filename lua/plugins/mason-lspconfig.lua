@@ -10,7 +10,7 @@ return {
         require("mason-lspconfig").setup {
             ensure_intsalled = {
 				"clangd", "cmake",
-                "omnisharp",
+                "roslyn", -- c# 
 				"glsl_analyzer",
 				"lua_ls",
 				"pylsp",
