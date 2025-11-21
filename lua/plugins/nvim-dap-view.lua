@@ -10,6 +10,12 @@ return {
     --     { "<C-Q>", "<cmd>DapViewClose!<cr>", desc = "Quit Debugging, close Debugging UI including DAP Terminal."},
     -- },
     opts = {
+        winbar = {
+            sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl", "console" },
+            controls = {
+                enabled = true,
+            },
+        },
         auto_toggle = true,
     },
     config = function(_, opts)
