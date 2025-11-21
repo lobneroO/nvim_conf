@@ -6,6 +6,8 @@
 --  (my word)
 -- in contrast, using sa2w( will add spaces around the parantheses
 --  ( my word )
+-- can also be used by selecting words (in visual mode) first
+-- and thereby can also work over several lines
 return {
     'nvim-mini/mini.surround',
     version = '*',
