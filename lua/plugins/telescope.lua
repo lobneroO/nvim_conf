@@ -65,7 +65,18 @@ return {
             pickers.new(opts, {
                 primpt_title = "file format",
                 finder = finders.new_table {
-                    results = { "unix", "dos", "mac" }
+                    results = { 
+                        {"unix style: \\n", "unix"},
+                        {"windows style: \\r\\n", "dos"},
+                        {"mac style: \\r", "mac"}
+                    },
+                    entry_maker = function(entry)
+                        return {
+                            value = entry,
+                            display = entry[1],
+                            ordinal = entry[1],
+                        }
+                    end
                 },
                 sorter = conf.generic_sorter(opts),
                 -- default behaviour of a picker would be to open the picked entry
@@ -75,8 +86,11 @@ return {
                         -- action.close here will close the picker
                         actions.close(prompt_bufnr)
                         local selection = action_state.get_selected_entry()
-                        -- here we have the selection in selection[1] and can act on it
-                        vim.cmd("set fileformat=" .. selection[1])
+                        -- print(vim.inspect(selection))
+                        -- here we have the selection in selection.value and can act on it
+                        -- value is the entire table entry, so we select (1-based) entry 2, which is
+                        -- a value that set fileformat accepts
+                        vim.cmd("set fileformat=" .. selection.value[2])
                     end)
                     return true
                 end
