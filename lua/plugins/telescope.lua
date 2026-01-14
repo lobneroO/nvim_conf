@@ -75,8 +75,6 @@ return {
                         -- action.close here will close the picker
                         actions.close(prompt_bufnr)
                         local selection = action_state.get_selected_entry()
-                        -- print(vim.inspect(selection))
-                        -- vim.api.nvim_put({ selection[1] }, "", false, true)
                         -- here we have the selection in selection[1] and can act on it
                         vim.cmd("set fileformat=" .. selection[1])
                     end)
@@ -88,12 +86,6 @@ return {
         vim.keymap.set('n', '<leader>sff', function()
             ffs()
         end, { desc = "Set fileformat for End of Line" })
-        -- neovim supports setting line endings for different OSs, but it's inconvenient with the command.
-        -- put it into a picker instead
-        -- vim.keymap.set('n', '<leader>sf', function()
-        --     local items = { 'unix', 'dos', 'mac' }
-        --
-        -- end)
 	end,
 }
 
