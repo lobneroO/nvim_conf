@@ -53,6 +53,47 @@ return {
             end, { desc = "Live grep" })
 
 
+        -- add custom picker to set fileformat (i.e. EOL characters)
+        local pickers = require "telescope.pickers"
+        local finders = require "telescope.finders"
+        local conf = require("telescope.config").values
+        local actions = require "telescope.actions"
+        local action_state = require "telescope.actions.state"
+
+        local ffs = function(opts)
+            opts = opts or {}
+            pickers.new(opts, {
+                primpt_title = "file format",
+                finder = finders.new_table {
+                    results = { "unix", "dos", "mac" }
+                },
+                sorter = conf.generic_sorter(opts),
+                -- default behaviour of a picker would be to open the picked entry
+                -- as a new buffer. to avoid that, create a custom action
+                attach_mappings = function(prompt_bufnr, map)
+                    actions.select_default:replace(function()
+                        -- action.close here will close the picker
+                        actions.close(prompt_bufnr)
+                        local selection = action_state.get_selected_entry()
+                        -- print(vim.inspect(selection))
+                        -- vim.api.nvim_put({ selection[1] }, "", false, true)
+                        -- here we have the selection in selection[1] and can act on it
+                        vim.cmd("set fileformat=" .. selection[1])
+                    end)
+                    return true
+                end
+            }):find()
+        end
+
+        vim.keymap.set('n', '<leader>sff', function()
+            ffs()
+        end, { desc = "Set fileformat for End of Line" })
+        -- neovim supports setting line endings for different OSs, but it's inconvenient with the command.
+        -- put it into a picker instead
+        -- vim.keymap.set('n', '<leader>sf', function()
+        --     local items = { 'unix', 'dos', 'mac' }
+        --
+        -- end)
 	end,
 }
 
