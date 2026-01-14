@@ -28,6 +28,22 @@ return {
                 }
             }
         })
+        -- there is a recurring issue with nvim spamming a unhandled promise rejection
+        -- in the folding ranges, which makes editing a nightmare. supposedly, this
+        -- setting helps
+        -- (see https://github.com/redhat-developer/yaml-language-server/issues/912
+        --  and https://neovim.io/doc/user/lsp.html)
+        --  this may be related to the ufo (folding) plugin
+        vim.lsp.config("*", {
+            capabilities = {
+                textDocument = {
+                    foldingRange = {
+                        dynamicRegistration = false,
+                        lineFoldingOnly = true,
+                    }
+                }
+            }
+        })
 
     end,
 }
