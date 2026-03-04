@@ -34,7 +34,7 @@ return {
             { desc = "Open file history for the entire repo" }
         )
         -- file history for selection
-        vim.keymap.set('n',
+        vim.keymap.set('v',
             '<leader>dh', "<Esc><cmd>'<,'>DiffviewFileHistory --follow<cr>",
             { desc = "Open file history for selection" }
         )
