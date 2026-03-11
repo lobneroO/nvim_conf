@@ -13,8 +13,8 @@ function my_paste(reg)
     end
 end
 
-if (os.getenv('SSH_TTY') == nil) then
-else
+-- if (os.getenv('SSH_TTY') == nil) then
+-- else
     vim.g.clipboard = {
         name = 'OSC 52',
         copy = {
@@ -26,7 +26,7 @@ else
             ['*'] = my_paste('*'),
         },
     }
-end
+-- end
 -- vim.g.clipboard = {
 --     name = 'OSC 52',
 --     copy = {
