@@ -6,17 +6,38 @@ vim.opt.clipboard = 'unnamedplus'
 -- force osc 52 as clipboard provider. available since nvim 0.10.0
 -- this will enable yank and paste from an ssh instance to the current
 -- desktop. needs to be supported by the terminal
-vim.g.clipboard = {
-    name = 'OSC 52',
-    copy = {
-        ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-        ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-    },
-    paste = {
-        ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-        ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
-    },
-}
+function my_paste(reg)
+    return function(lines)
+        local content = vim.fn.getreg('"')
+        return vim.split(content, '\n')
+    end
+end
+
+if (os.getenv('SSH_TTY') == nil) then
+else
+    vim.g.clipboard = {
+        name = 'OSC 52',
+        copy = {
+            ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+            ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+        },
+        paste = {
+            ['+'] = my_paste('+'),
+            ['*'] = my_paste('*'),
+        },
+    }
+end
+-- vim.g.clipboard = {
+--     name = 'OSC 52',
+--     copy = {
+--         ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+--         ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+--     },
+--     paste = {
+--         ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+--         ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+--     },
+-- }
 
 -- use 4 spaces for tabs
 vim.opt.tabstop = 4
