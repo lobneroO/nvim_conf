@@ -75,8 +75,8 @@ return {
 
 		map("n", "<C-h>", "<Plug>(cokeline-focus-prev)", { desc = "Previous Buffer", silent = true})
 		map("n", "<C-l>", "<Plug>(cokeline-focus-next)", { desc = "Next Buffer", silent = true})
-		map("n", "<A-h>", "<Plug>(cokeline-switch-prev)", { desc = "Move Buffer left", silent = true})
-		map("n", "<A-l>", "<Plug>(cokeline-switch-next)", { desc = "Move Buffer right", silent = true})
+		map("n", "<A-,>", "<Plug>(cokeline-switch-prev)", { desc = "Move Buffer left", silent = true})
+		map("n", "<A-.>", "<Plug>(cokeline-switch-next)", { desc = "Move Buffer right", silent = true})
 
         -- select a buffer by index
         for i = 1, 9 do
