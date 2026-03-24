@@ -35,6 +35,9 @@ return {
 		-- remap keys for "fold all" and "unfold all"
    		vim.keymap.set('n', 'zR', require('ufo').openAllFolds, { desc = "Open all folds" })
    		vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, { desc = "Close all folds" })
+
+
+        vim.keymap.set('n', 'zl', require('ufo').closeFoldsWith, { desc = "Use as <number>zl. No number -> means 1. Close all folds with given level or higher." })
 	end,
 }
 
