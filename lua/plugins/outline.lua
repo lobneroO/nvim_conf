@@ -6,7 +6,7 @@ return {
     lazy = true,
     cmd = { "Outline", "OutlineOpen" },
     keys = {
-        { "<C-o>", "<cmd>Outline<CR>", desc = "Toggle Outline" },
+        { "<C-s>", "<cmd>Outline<CR>", desc = "Toggle Outline (\"Solution Explorer\")" },
     },
     opts = {
         -- any custom opts
