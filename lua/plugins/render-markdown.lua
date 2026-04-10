@@ -1,4 +1,4 @@
- return {
+return {
     'MeanderingProgrammer/render-markdown.nvim',
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
@@ -6,11 +6,13 @@
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {},
-	config = function()
-		require("render-markdown").setup({
-             completions = { lsp = { enabled = true } },
-             vim.keymap.set('n', "<leader>mp", ":RenderMarkdown buf_toggle<CR>",
-                 { desc = "Open Markdown Preview"})
-         })
-     end,
+    config = function()
+        require("render-markdown").setup({
+            completions = { lsp = { enabled = true } },
+            vim.keymap.set('n', "<leader>mp", ":RenderMarkdown buf_toggle<CR>",
+                { desc = "Toggle Markdown inline Preview" }),
+            vim.keymap.set('n', "<leader>mm", ":RenderMarkdown preview<CR>",
+                { desc = "Toggle Markdown preview buffer to the side" })
+        })
+    end,
 }
