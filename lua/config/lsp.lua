@@ -7,11 +7,11 @@ vim.keymap.set('n', 'gd', function()
 end, { desc = "Go to definition" })
 vim.keymap.set('n', '<leader>.',
     function()
-        vim.diagnostic.goto_next()
+        vim.diagnostic.jump({count=1, float=true})
     end, { desc = "Go to next diagnostic"})
 vim.keymap.set('n', '<leader>,',
     function()
-        vim.diagnostic.goto_prev()
+        vim.diagnostic.jump({count=-1, float=true})
     end, { desc = "Go to previous diagnostic"})
 -- need to get type information for the symbol (i.e. usually variable)
 -- under the cursor
