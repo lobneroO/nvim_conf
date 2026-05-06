@@ -3,7 +3,6 @@
 return {
 	"Dax89/automaton.nvim",
 	dependencies = {
-		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope.nvim",
 		"mfussenegger/nvim-dap", -- Debug support for 'launch' configurations (Optional)
 		"hrsh7th/nvim-cmp",      -- Autocompletion for automaton workspace files (Optional)
@@ -28,6 +27,11 @@ return {
 		vim.keymap.set("n", "<leader>wl", "<CMD>Automaton launch<CR>", { desc = "Automaton launch options"})
 		vim.keymap.set("n", "<leader>wd", "<CMD>Automaton debug<CR>", { desc = "Start debugging"})
 		vim.keymap.set("n", "<leader>wt", "<CMD>Automaton tasks<CR>", { desc = "Automaton tasks"})
+
+        -- shortcut for defaults
+        vim.keymap.set("n", "<leader>wD", "<CMD>Automaton debug default<CR>", { desc = "Start debugging default setup" })
+        vim.keymap.set("n", "<leader>wT", "<CMD>Automaton tasks default<CR>", { desc = "Start default task" })
+        vim.keymap.set("n", "<leader>wL", "<CMD>Automaton launch default<CR>", { desc = "Start default launch setup" })
 	end,
 }
 
