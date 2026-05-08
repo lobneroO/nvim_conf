@@ -13,6 +13,9 @@ vim.opt.expandtab = true
 -- disable line wraps
 vim.opt.wrap = false
 
+-- highlight the line the cursor is on
+vim.wo.cursorline = true
+
 -- increase the search highlighting experience
 vim.opt.incsearch = true
 
