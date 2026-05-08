@@ -1,5 +1,5 @@
 return {
-	'nvim-telescope/telescope.nvim', branch = '0.1.x',
+	'nvim-telescope/telescope.nvim', version = '*',
 	dependencies = {
 		'nvim-lua/plenary.nvim',
 		'nvim-tree/nvim-web-devicons',
@@ -9,6 +9,7 @@ return {
             -- For major updates, this must be adjusted manually.
             version = "^1.0.0",
         },
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 	},
 	-- add some key mappings to access the telescope functionalities
 	config = function()
