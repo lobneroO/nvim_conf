@@ -3,10 +3,7 @@
 -- original at https://github.com/sindrets/diffview.nvim
 
 return {
-	"dlyongemallo/diffview.nvim",
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-	},
+	"dlyongemallo/diffview-plus.nvim",
 
 	config = function()
 		require("diffview").setup()
