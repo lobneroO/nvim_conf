@@ -28,6 +28,8 @@ return {
 		vim.keymap.set("n", "<leader>wd", "<CMD>Automaton debug<CR>", { desc = "Start debugging"})
 		vim.keymap.set("n", "<leader>wt", "<CMD>Automaton tasks<CR>", { desc = "Automaton tasks"})
 
+		vim.keymap.set("n", "<leader>wo", "<CMD>Automaton toggle_terminal<CR>", { desc = "Toggle automaton output window" })
+
         -- shortcut for defaults
         vim.keymap.set("n", "<leader>wD", "<CMD>Automaton debug default<CR>", { desc = "Start debugging default setup" })
         vim.keymap.set("n", "<leader>wT", "<CMD>Automaton tasks default<CR>", { desc = "Start default task" })
