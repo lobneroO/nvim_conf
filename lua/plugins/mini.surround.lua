@@ -13,6 +13,11 @@ return {
     version = '*',
 
     config = function()
-        require('mini.surround').setup()
+        local pairs = { ['('] = ')', ['['] = ']', ['{'] = '}', ['<'] = '>' }
+        require('mini.surround').setup({
+            -- makes linewise visual selection (V) put surroundings on their own
+            -- line and auto-indent them using each line's own indent
+            respect_selection_type = true,
+        })
     end
 }
