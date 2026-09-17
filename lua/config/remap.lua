@@ -23,3 +23,19 @@ vim.keymap.set("n", "<leader>sfp",
 vim.keymap.set('n', '<leader>di', function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { silent = true, noremap = true, desc = "Toggle LSP diagnostics" })
+
+-- toggle the quick fix list
+local function toggle_quickfix()
+    local windows = vim.fn.getwininfo()
+    for _, win in pairs(windows) do
+        if win["quickfix"] == 1 then
+            vim.cmd.cclose()
+            return
+        end
+    end
+    vim.cmd.copen()
+end
+
+vim.keymap.set('n', '<leader>qt', 
+	toggle_quickfix, 
+	{ silent = true, noremap = true, desc = "Toggle quick fix list"})
