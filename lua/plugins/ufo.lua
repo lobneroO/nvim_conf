@@ -28,6 +28,9 @@ return {
         end
 		require("ufo").setup({
 			provider_selector = function(bufnr, filetype, buftype)
+                if filetype == "ps1" then
+                    return { 'treesitter', 'indent' }
+                end
 				return { 'lsp', 'indent' }
      			end
    		})
@@ -40,4 +43,3 @@ return {
         vim.keymap.set('n', 'zl', require('ufo').closeFoldsWith, { desc = "Use as <number>zl. No number -> means 1. Close all folds with given level or higher." })
 	end,
 }
-

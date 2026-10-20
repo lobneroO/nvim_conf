@@ -13,11 +13,13 @@ return {
 				"glsl_analyzer",
 				"lua_ls",
 				"pylsp",
-                "powershell_es",
 				"ltex", -- includes LaTeX and markdown
 				-- "rust_analyzer", -- not recommended when using rustaceanvim
                 -- "c#" (/"roslyn") installed via mason-tool-installer in mason.lua
-            }
+            },
+            automatic_enable = {
+                exclude = { "powershell_es" },
+            },
         }
 
         vim.lsp.config("lua_ls", {

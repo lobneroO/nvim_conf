@@ -17,6 +17,7 @@ return {
         require("mason-tool-installer").setup({
             ensure_installed = {
                 "roslyn",
+                "powershell-editor-services",
             },
         })
     end

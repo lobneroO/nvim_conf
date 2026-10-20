@@ -18,6 +18,7 @@ return {
 				"javascript", "html", "json", "xml", "yaml",
 				"rust", "toml",
 				"python",
+				"powershell",
 				"make", "cmake",
             }
         })
