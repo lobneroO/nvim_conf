@@ -2,6 +2,9 @@
 -- but we need to set up registries for roslyn (C#) somewhere...
 return {
     "williamboman/mason.nvim",
+    dependencies = {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+    },
 
     config = function()
         require("mason").setup ({
@@ -9,6 +12,12 @@ return {
                 "github:mason-org/mason-registry",
                 "github:Crashdummyy/mason-registry",
             }
+        })
+
+        require("mason-tool-installer").setup({
+            ensure_installed = {
+                "roslyn",
+            },
         })
     end
 }

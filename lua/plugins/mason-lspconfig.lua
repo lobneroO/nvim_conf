@@ -2,20 +2,21 @@ return {
     "mason-org/mason-lspconfig.nvim",
     opts = {},
     dependencies = {
-        { "mason-org/mason.nvim", opts = {} },
+        "mason-org/mason.nvim",
         "neovim/nvim-lspconfig",
     },
 
     config = function()
         require("mason-lspconfig").setup {
-            ensure_intsalled = {
-				"clangd", "cmake",
-                "roslyn", -- c# 
+            ensure_installed = {
+				"clangd", "neocmake",
 				"glsl_analyzer",
 				"lua_ls",
 				"pylsp",
+                "powershell_es",
 				"ltex", -- includes LaTeX and markdown
 				-- "rust_analyzer", -- not recommended when using rustaceanvim
+                -- "c#" (/"roslyn") installed via mason-tool-installer in mason.lua
             }
         }
 
