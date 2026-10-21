@@ -35,7 +35,7 @@ return {
             '<leader>dh', "<Esc><cmd>'<,'>DiffviewFileHistory --follow<cr>",
             { desc = "Open file history for selection" }
         )
-        
+
         -- diff against main/master
         vim.keymap.set('n', '<leader>dm', function()
             -- try main first, fall back to master
@@ -43,8 +43,17 @@ return {
             local result = handle:read('*a')
             handle:close()
             local branch = result ~= '' and 'main' or 'master'
-            vim.cmd('Diffview Open' .. branch)
+            vim.cmd('DiffviewOpen ' .. branch)
         end, { desc = "Diff against main/master" })
+
+        -- diff against previous commit (HEAD~1)
+        vim.keymap.set('n', '<leader>dp', function()
+            vim.cmd('DiffviewOpen HEAD~1')
+        end, { desc = "Diff against previous commit (HEAD~1)"})
+        -- diff against previous commit, ignoring current unstaged changes (HEAD~1)
+        vim.keymap.set('n', '<leader>dP', function()
+            vim.cmd('DiffviewOpen HEAD..HEAD~1')
+        end, { desc = "Diff against previous commit (HEAD~1)"})
 	end,
 }
 
