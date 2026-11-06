@@ -38,13 +38,12 @@ return {
 
         -- diff against main/master
         vim.keymap.set('n', '<leader>dm', function()
-            -- try main first, fall back to master
-            local handle = io.popen('git rev-parse --verify main 2>/dev/null')
-            local result = handle:read('*a')
-            handle:close()
-            local branch = result ~= '' and 'main' or 'master'
+            -- Try main first, fall back to master
+            local result = vim.fn.systemlist({ 'git', 'rev-parse', '--verify', 'main' })
+            local ok = vim.v.shell_error == 0 and result[1] ~= nil and result[1] ~= ''
+            local branch = ok and 'main' or 'master'
             vim.cmd('DiffviewOpen ' .. branch)
-        end, { desc = "Diff against main/master" })
+        end, { desc = 'Diff against main/master' })
 
         -- diff against previous commit (HEAD~1)
         vim.keymap.set('n', '<leader>dp', function()
